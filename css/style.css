@@ -1,0 +1,1622 @@
+/* =========================================================
+       VARIÁVEIS DE COR E ESTILO
+       Para trocar a paleta do site inteiro, mude só os valores
+       aqui embaixo — todo o resto do CSS usa essas variáveis.
+       ========================================================= */
+:root {
+    --blue: #2563EB;
+    /* cor primária (links, botões principais) */
+    --blue-deep: #1D3FAE;
+    /* azul mais escuro, usado em hover e gradientes */
+    --green: #0FAE7C;
+    /* cor de destaque (WhatsApp, sucesso) */
+    --green-soft: #E4F8F1;
+    /* verde clarinho, fundo decorativo */
+    --ink: #0B1220;
+    /* quase-preto usado nos textos principais */
+    --slate: #54607A;
+    /* cinza-azulado do texto secundário */
+    --slate-light: #8993AB;
+    /* cinza mais claro (legendas, textos discretos) */
+    --bg: #F6F8FC;
+    /* fundo cinza claro das seções alternadas */
+    --white: #FFFFFF;
+    --line: #E4E9F2;
+    /* cor das bordas/divisórias sutis */
+    --blue-soft: #EAF0FE;
+    /* azul clarinho, fundo de badges */
+    --radius: 18px;
+    /* raio de borda padrão dos cards */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    /* rolagem suave ao clicar nos links do menu (#servicos, #sobre, etc.) */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--ink);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    /* evita barra de rolagem horizontal por causa das animações */
+}
+
+h1,
+h2,
+h3,
+.display {
+    font-family: 'Space Grotesk', sans-serif;
+    /* fonte de destaque usada nos títulos */
+}
+
+.mono {
+    font-family: 'JetBrains Mono', monospace;
+    /* fonte usada nos rótulos técnicos (eyebrows, tags) */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+.wrap {
+    max-width: 1180px;
+    /* largura máxima do conteúdo em telas grandes */
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+section {
+    position: relative;
+}
+
+/* =========================================================
+       ANIMAÇÃO DE ENTRADA AO ROLAR A PÁGINA (scroll reveal)
+       Qualquer elemento com a classe .reveal começa invisível
+       e "sobe" suavemente quando entra na tela. .reveal-stagger
+       faz o mesmo, mas item por item (com atraso crescente),
+       ideal para grades de cards. O JS que ativa isso está no
+       final do arquivo, perto do </body>.
+       ========================================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .7s cubic-bezier(.2, .7, .2, 1), transform .7s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.reveal-stagger>* {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .6s cubic-bezier(.2, .7, .2, 1), transform .6s cubic-bezier(.2, .7, .2, 1);
+}
+
+.reveal-stagger.in>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* atraso individual para cada item de uma grade, criando o efeito cascata */
+.reveal-stagger.in>*:nth-child(1) {
+    transition-delay: .02s
+}
+
+.reveal-stagger.in>*:nth-child(2) {
+    transition-delay: .09s
+}
+
+.reveal-stagger.in>*:nth-child(3) {
+    transition-delay: .16s
+}
+
+.reveal-stagger.in>*:nth-child(4) {
+    transition-delay: .23s
+}
+
+.reveal-stagger.in>*:nth-child(5) {
+    transition-delay: .30s
+}
+
+.reveal-stagger.in>*:nth-child(6) {
+    transition-delay: .37s
+}
+
+.reveal-stagger.in>*:nth-child(7) {
+    transition-delay: .44s
+}
+
+.reveal-stagger.in>*:nth-child(8) {
+    transition-delay: .51s
+}
+
+/* Respeita quem desativou animações no sistema operacional */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+
+    .reveal,
+    .reveal-stagger>* {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+}
+
+/* =========================================================
+       CABEÇALHO / MENU
+       ========================================================= */
+header {
+    position: sticky;
+    /* fica fixo no topo ao rolar a página */
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 255, 255, .82);
+    backdrop-filter: blur(10px);
+    /* efeito de vidro fosco atrás do menu */
+    border-bottom: 1px solid var(--line);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -.02em;
+}
+
+.brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 9px;
+    background: linear-gradient(140deg, var(--blue), var(--green));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--slate);
+}
+
+.nav-links a:hover {
+    color: var(--blue);
+}
+
+.nav-cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: .25s;
+}
+
+.nav-cta:hover {
+    background: var(--blue);
+    transform: translateY(-1px);
+}
+
+/* No celular escondemos os links do menu e deixamos só o botão de contato */
+@media (max-width:860px) {
+    .nav-links {
+        display: none;
+    }
+
+    .nav-cta span {
+        display: none;
+    }
+
+    .nav-cta {
+        padding: 10px;
+        border-radius: 12px;
+    }
+}
+
+/* =========================================================
+       BOTÕES
+       ========================================================= */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    padding: 15px 26px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    border: none;
+    transition: .25s cubic-bezier(.2, .7, .2, 1);
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: var(--blue);
+    color: #fff;
+    box-shadow: 0 10px 24px -8px rgba(37, 99, 235, .55);
+}
+
+.btn-primary:hover {
+    background: var(--blue-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 28px -8px rgba(37, 99, 235, .6);
+}
+
+.btn-whats {
+    background: var(--green);
+    color: #fff;
+    box-shadow: 0 10px 24px -8px rgba(15, 174, 124, .5);
+}
+
+.btn-whats:hover {
+    background: #0c9268;
+    transform: translateY(-2px);
+}
+
+.btn-ghost {
+    background: #fff;
+    color: var(--ink);
+    border: 1.5px solid var(--line);
+}
+
+.btn-ghost:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+/* =========================================================
+       HERO (primeira seção, "acima da dobra")
+       ========================================================= */
+.hero {
+    padding: 104px 0 90px;
+    background:
+        radial-gradient(circle at 1px 1px, #D6E0F5 1.4px, transparent 0) 0 0/26px 26px,
+        linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr .95fr;
+    gap: 56px;
+    align-items: center;
+}
+
+@media (max-width:940px) {
+    .hero-grid {
+        grid-template-columns: 1fr;
+        /* empilha texto e ilustração no celular/tablet */
+    }
+}
+
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--blue-deep);
+    background: var(--blue-soft);
+    padding: 7px 13px;
+    border-radius: 100px;
+    margin-bottom: 22px;
+    letter-spacing: .02em;
+}
+
+.eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+}
+
+.hero h1 {
+    font-size: clamp(34px, 4.6vw, 54px);
+    line-height: 1.08;
+    letter-spacing: -.025em;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 22px;
+}
+
+.hero h1 .accent {
+    color: var(--blue);
+}
+
+.hero p.lead {
+    font-size: 18px;
+    line-height: 1.6;
+    color: var(--slate);
+    max-width: 520px;
+    margin-bottom: 34px;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-bottom: 38px;
+}
+
+.hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    flex-wrap: wrap;
+    color: var(--slate-light);
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.hero-trust span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.hero-trust svg {
+    width: 16px;
+    height: 16px;
+    color: var(--green);
+}
+
+/* ---------------------------------------------------------
+       Elemento de assinatura visual do hero: "arquivos" que
+       chegam espalhados e se organizam em grade — metáfora de
+       "transformar desorganização em clareza". Cada .chip tem
+       uma posição/rotação inicial diferente (variáveis --tx,
+       --ty, --rx) e anima até a posição final com @keyframes
+       settle, logo abaixo.
+       --------------------------------------------------------- */
+.assembler {
+    position: relative;
+    height: 420px;
+}
+
+.assembler-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.chip {
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 14px 30px -14px rgba(15, 23, 42, .16);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 14px 15px;
+    animation: settle 1.1s cubic-bezier(.2, .7, .2, 1) both;
+}
+
+.chip svg {
+    width: 18px;
+    height: 18px;
+}
+
+.chip .tag {
+    font-family: 'JetBrains Mono';
+    font-size: 9.5px;
+    color: var(--slate-light);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+.chip .bar {
+    height: 6px;
+    border-radius: 4px;
+    background: var(--line);
+    margin-top: 8px;
+}
+
+.chip .bar.short {
+    width: 60%;
+}
+
+/* cada chip recebe um ponto de partida (posição/rotação) e um atraso diferente */
+.chip.c1 {
+    grid-column: 1;
+    grid-row: 1;
+    --rx: -24deg;
+    --tx: -60px;
+    --ty: -40px;
+    animation-delay: .05s;
+}
+
+.chip.c2 {
+    grid-column: 2;
+    grid-row: 1;
+    --rx: 18deg;
+    --tx: 40px;
+    --ty: -70px;
+    animation-delay: .16s;
+}
+
+.chip.c3 {
+    grid-column: 3;
+    grid-row: 1;
+    --rx: -14deg;
+    --tx: 70px;
+    --ty: -20px;
+    animation-delay: .27s;
+}
+
+.chip.c4 {
+    grid-column: 1;
+    grid-row: 2;
+    --rx: 20deg;
+    --tx: -80px;
+    --ty: 10px;
+    animation-delay: .38s;
+}
+
+.chip.c5 {
+    grid-column: 2;
+    grid-row: 2;
+    --rx: -10deg;
+    --tx: 10px;
+    --ty: 60px;
+    animation-delay: .49s;
+    background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+}
+
+.chip.c5 svg,
+.chip.c5 .tag {
+    color: #fff;
+}
+
+.chip.c5 .bar {
+    background: rgba(255, 255, 255, .35);
+}
+
+.chip.c6 {
+    grid-column: 3;
+    grid-row: 2;
+    --rx: 26deg;
+    --tx: 65px;
+    --ty: 35px;
+    animation-delay: .60s;
+}
+
+.chip.c7 {
+    grid-column: 1;
+    grid-row: 3;
+    --rx: -18deg;
+    --tx: -50px;
+    --ty: 80px;
+    animation-delay: .71s;
+}
+
+.chip.c8 {
+    grid-column: 2;
+    grid-row: 3;
+    --rx: 12deg;
+    --tx: -15px;
+    --ty: 75px;
+    animation-delay: .82s;
+    background: linear-gradient(135deg, var(--green), #0C8F65);
+}
+
+.chip.c8 svg,
+.chip.c8 .tag {
+    color: #fff;
+}
+
+.chip.c8 .bar {
+    background: rgba(255, 255, 255, .35);
+}
+
+.chip.c9 {
+    grid-column: 3;
+    grid-row: 3;
+    --rx: -22deg;
+    --tx: 55px;
+    --ty: 55px;
+    animation-delay: .93s;
+}
+
+/* anima de (posição espalhada + rotacionada) até (posição alinhada na grade) */
+@keyframes settle {
+    0% {
+        opacity: 0;
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rx)) scale(.85);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0, 0) rotate(0) scale(1);
+    }
+}
+
+.assembler-caption {
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'JetBrains Mono';
+    font-size: 12px;
+    color: var(--slate-light);
+}
+
+@media (max-width:940px) {
+    .assembler {
+        height: 300px;
+        margin-top: 20px;
+    }
+}
+
+/* =========================================================
+       CABEÇALHOS DE SEÇÃO (eyebrow + título + subtítulo)
+       ========================================================= */
+.section-pad {
+    padding: 96px 0;
+}
+
+.head {
+    max-width: 800px;
+    /* largura da coluna de texto — evita linhas longas demais */
+    margin-bottom: 52px;
+}
+
+.head.center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.head h2 {
+    font-size: clamp(26px, 3.2vw, 38px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    line-height: 1.15;
+    margin-bottom: 14px;
+}
+
+.head p {
+    font-size: 16.5px;
+    color: var(--slate);
+    line-height: 1.6;
+    /* evita que a última linha do parágrafo quebre com uma palavra solta */
+    text-wrap: pretty;
+}
+
+.kicker {
+    font-family: 'JetBrains Mono';
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--blue);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: block;
+}
+
+/* =========================================================
+       SEÇÃO "PROBLEMAS QUE RESOLVO"
+       ========================================================= */
+.problems {
+    background: var(--bg);
+}
+
+.problem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+@media (max-width:860px) {
+    .problem-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:560px) {
+    .problem-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.problem-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 26px 22px;
+    transition: .25s;
+}
+
+.problem-card:hover {
+    border-color: #F0B7B7;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px -18px rgba(15, 23, 42, .18);
+}
+
+.problem-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: #FEEEEE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.problem-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #DC5B5B;
+}
+
+.problem-card p {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+.problems-close {
+    text-align: center;
+    margin-top: 44px;
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+}
+
+.problems-close .g {
+    color: var(--green);
+}
+
+/* =========================================================
+       SEÇÃO "SERVIÇOS"
+       ========================================================= */
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+}
+
+@media (max-width:980px) {
+    .service-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:560px) {
+    .service-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.service-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: .3s cubic-bezier(.2, .7, .2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 40px -22px rgba(15, 23, 42, .22);
+    border-color: transparent;
+}
+
+.service-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.service-icon svg {
+    width: 22px;
+    height: 22px;
+    color: #fff;
+}
+
+.service-card h3 {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -.01em;
+}
+
+.service-card li {
+    font-size: 14px;
+    color: var(--slate);
+    padding: 6px 0;
+    border-top: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.service-card li:first-of-type {
+    border-top: none;
+}
+
+.service-card li svg {
+    width: 13px;
+    height: 13px;
+    color: var(--slate-light);
+    flex-shrink: 0;
+}
+
+/* cor de cada categoria de serviço (Planilhas / Apresentações / Documentos / Materiais Gráficos) */
+.s1 .service-icon {
+    background: linear-gradient(135deg, var(--blue), #4C7BF0);
+}
+
+.s2 .service-icon {
+    background: linear-gradient(135deg, var(--green), #25C297);
+}
+
+.s3 .service-icon {
+    background: linear-gradient(135deg, #6B5BD9, #8B7BEA);
+}
+
+.s4 .service-icon {
+    background: linear-gradient(135deg, #E08A2E, #F0A64C);
+}
+
+/* =========================================================
+       SEÇÃO "DIFERENCIAIS" (fundo escuro)
+       ========================================================= */
+.diff {
+    background: var(--ink);
+    color: #fff;
+}
+
+.diff .kicker {
+    color: #8FB2FF;
+}
+
+.diff .head p {
+    color: #AEB8D0;
+}
+
+.diff-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    /* o "gap" vira as linhas finas entre os cards, junto com o background abaixo */
+    background: rgba(255, 255, 255, .1);
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+@media (max-width:860px) {
+    .diff-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:560px) {
+    .diff-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.diff-card {
+    background: #111A2E;
+    padding: 28px 22px;
+    transition: .25s;
+}
+
+.diff-card:hover {
+    background: #16213A;
+}
+
+.diff-card svg {
+    width: 20px;
+    height: 20px;
+    color: var(--green);
+    margin-bottom: 14px;
+}
+
+.diff-card p {
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #fff;
+}
+
+/* =========================================================
+       SEÇÃO "COMO FUNCIONA" (linha do tempo com 5 passos)
+       ========================================================= */
+.steps {
+    position: relative;
+}
+
+.steps-line {
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--line);
+    /* linha horizontal atrás dos números, só no desktop */
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    position: relative;
+}
+
+@media (max-width:860px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+        /* empilha os passos no celular */
+    }
+
+    .steps-line {
+        display: none;
+    }
+}
+
+.step {
+    position: relative;
+}
+
+.step-num {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid var(--blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    color: var(--blue);
+    font-size: 18px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* o último passo (entrega final) fica destacado em verde */
+.step:nth-child(5) .step-num {
+    background: var(--green);
+    border-color: var(--green);
+    color: #fff;
+}
+
+.step h4 {
+    font-size: 15.5px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.step p {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.55;
+}
+
+/* =========================================================
+       SEÇÃO "PORTFÓLIO"
+       Os cards usam mockups coloridos (gradiente + ícone) no
+       lugar de fotos reais. Veja no corpo do HTML como duplicar
+       um card para adicionar um novo projeto.
+       ========================================================= */
+.port-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width:860px) {
+    .port-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width:560px) {
+    .port-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.port-card {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #fff;
+    transition: .3s;
+}
+
+.port-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 38px -20px rgba(15, 23, 42, .22);
+}
+
+.port-thumb {
+    height: 168px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.port-thumb svg {
+    width: 34px;
+    height: 34px;
+    color: #fff;
+    opacity: .92;
+}
+
+/* Quando o card usa uma foto/print real (em vez do mockup colorido),
+       a imagem preenche a miniatura inteira, cortando o excesso. */
+.port-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.port-info {
+    padding: 16px 18px;
+}
+
+.port-info .tag {
+    font-family: 'JetBrains Mono';
+    font-size: 10.5px;
+    color: var(--slate-light);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.port-info h4 {
+    font-size: 15px;
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+/* linhas decorativas que simulam texto/planilha dentro do mockup */
+.mock-lines {
+    position: absolute;
+    inset: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    justify-content: center;
+    opacity: .55;
+}
+
+.mock-lines i {
+    display: block;
+    height: 5px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, .55);
+}
+
+/* =========================================================
+       SEÇÃO "SOBRE MIM"
+       ========================================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+    gap: 56px;
+    align-items: center;
+}
+
+@media (max-width:860px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.about-photo {
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+    background: linear-gradient(160deg, var(--blue-soft), var(--green-soft));
+    padding: 0;
+    aspect-ratio: 4/4.6;
+}
+
+.about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+}
+
+.about-badge {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: rgba(11, 18, 32, .72);
+    backdrop-filter: blur(6px);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.about-badge svg {
+    width: 16px;
+    height: 16px;
+    color: var(--green);
+    flex-shrink: 0;
+}
+
+.about-badge span {
+    font-size: 12.5px;
+    font-weight: 600;
+}
+
+.about-text .kicker {
+    margin-bottom: 10px;
+}
+
+.about-text h2 {
+    font-size: clamp(24px, 3vw, 32px);
+    font-weight: 700;
+    margin-bottom: 18px;
+    letter-spacing: -.02em;
+}
+
+.about-text p {
+    font-size: 16.5px;
+    color: var(--slate);
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.about-tags span {
+    font-family: 'JetBrains Mono';
+    font-size: 12px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    padding: 8px 14px;
+    border-radius: 100px;
+    color: var(--slate);
+}
+
+/* =========================================================
+       SEÇÃO "DEPOIMENTOS"
+       ========================================================= */
+.testi {
+    background: var(--bg);
+}
+
+.testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width:860px) {
+    .testi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.testi-card {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 28px 24px;
+}
+
+.stars {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 16px;
+}
+
+.stars svg {
+    width: 15px;
+    height: 15px;
+    color: #F5A623;
+    fill: #F5A623;
+}
+
+.testi-card p.quote {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink);
+    margin-bottom: 22px;
+}
+
+.testi-person {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.testi-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-family: 'Space Grotesk';
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.testi-person .n {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.testi-person .r {
+    font-size: 12.5px;
+    color: var(--slate-light);
+}
+
+/* =========================================================
+       CHAMADA FINAL (CTA) — bloco azul antes do rodapé
+       ========================================================= */
+.cta-final {
+    background: linear-gradient(135deg, var(--blue) 0%, var(--blue-deep) 55%, #14235E 100%);
+    color: #fff;
+    text-align: center;
+    border-radius: 28px;
+    padding: 72px 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-final::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 80% 20%, rgba(15, 174, 124, .35), transparent 55%);
+}
+
+.cta-final h2 {
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -.02em;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+.cta-final p {
+    font-size: 17px;
+    color: #DCE6FF;
+    max-width: 480px;
+    margin: 0 auto 34px;
+    position: relative;
+}
+
+.cta-final .btn-whats {
+    font-size: 16.5px;
+    padding: 18px 34px;
+    position: relative;
+}
+
+/* =========================================================
+       RODAPÉ
+       ========================================================= */
+footer {
+    background: var(--ink);
+    color: #AEB8D0;
+    padding: 60px 0 28px;
+}
+
+.foot-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 48px;
+}
+
+@media (max-width:760px) {
+    .foot-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+.foot-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 14px;
+}
+
+.foot-col h5 {
+    font-family: 'JetBrains Mono';
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #6B7695;
+    margin-bottom: 16px;
+}
+
+.foot-col p,
+.foot-col a {
+    display: block;
+    font-size: 14.5px;
+    color: #C4CCE2;
+    margin-bottom: 10px;
+    transition: .2s;
+}
+
+.foot-col a:hover {
+    color: #fff;
+}
+
+.foot-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 6px;
+}
+
+.foot-social a {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, .06);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+}
+
+.foot-social a:hover {
+    background: var(--blue);
+}
+
+.foot-social svg {
+    width: 17px;
+    height: 17px;
+    color: #fff;
+}
+
+.foot-bottom {
+    border-top: 1px solid rgba(255, 255, 255, .08);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    color: #6B7695;
+}
+
+/* =========================================================
+       BOTÃO FLUTUANTE DO WHATSAPP (canto inferior direito)
+       ========================================================= */
+.float-wa {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 60;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 26px -8px rgba(15, 174, 124, .65);
+    animation: pulse 2.6s ease-in-out infinite;
+    /* pulsação sutil pra chamar atenção */
+}
+
+.float-wa svg {
+    width: 27px;
+    height: 27px;
+    color: #fff;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 12px 26px -8px rgba(15, 174, 124, .65);
+    }
+
+    50% {
+        box-shadow: 0 12px 34px -6px rgba(15, 174, 124, .9);
+    }
+}
+
+::selection {
+    background: var(--blue);
+    color: #fff;
+}
+
+/* =========================================================
+       TELA DE CARREGAMENTO (preloader com o robô)
+       Fica visível por cima de tudo até a página terminar de
+       carregar. O JS que a esconde está no final do arquivo,
+       na função hidePreloader().
+       ========================================================= */
+#preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    /* acima de todo o resto, inclusive do menu fixo */
+    background:
+        radial-gradient(circle at 1px 1px, #D6E0F5 1.4px, transparent 0) 0 0/26px 26px,
+        linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity .55s cubic-bezier(.2, .7, .2, 1), visibility .55s;
+}
+
+#preloader.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    /* impede clicar em algo "invisível" durante o fade-out */
+}
+
+.loader-bot {
+    width: 132px;
+    height: 132px;
+    object-fit: contain;
+    animation: bot-float 2.6s ease-in-out infinite;
+    filter: drop-shadow(0 18px 26px rgba(37, 99, 235, .25));
+}
+
+@keyframes bot-float {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-1.5deg);
+    }
+
+    50% {
+        transform: translateY(-14px) rotate(1.5deg);
+    }
+}
+
+.loader-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 22px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--ink);
+}
+
+.loader-brand .brand-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
+    font-size: 11px;
+}
+
+.loader-text {
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    color: var(--slate-light);
+    letter-spacing: .03em;
+}
+
+.loader-dots {
+    display: inline-block;
+    width: 1.2em;
+    text-align: left;
+}
+
+.loader-bar {
+    width: 160px;
+    height: 4px;
+    border-radius: 4px;
+    background: var(--line);
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.loader-bar-fill {
+    height: 100%;
+    width: 40%;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+    animation: bar-sweep 1.3s ease-in-out infinite;
+    /* barra "varre" a largura, sem indicar % real */
+}
+
+@keyframes bar-sweep {
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(350%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .loader-bot {
+        animation: none;
+    }
+
+    .loader-bar-fill {
+        animation: none;
+        width: 70%;
+    }
+}
+
+/* ==========================
+   MODAL PORTFÓLIO
+========================== */
+
+.port-card {
+    cursor: pointer;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, .8);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: .3s;
+}
+
+.modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    width: min(900px, 92%);
+    max-height: 90vh;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 20px;
+    position: relative;
+    animation: modalOpen .3s ease;
+}
+
+@keyframes modalOpen {
+    from {
+        transform: translateY(20px) scale(.95);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #f2f2f2;
+    cursor: pointer;
+    font-size: 22px;
+    z-index: 2;
+}
+
+.modal-media img,
+.modal-media video {
+    width: 100%;
+    display: block;
+}
+
+.modal-body {
+    padding: 28px;
+}
+
+.modal-body h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.modal-body p {
+    color: var(--slate);
+    line-height: 1.6;
+}
+
+.tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tools span {
+    background: var(--blue-soft);
+    color: var(--blue);
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 13px;
+    font-weight: 600;
+}
