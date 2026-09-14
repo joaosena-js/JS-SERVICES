@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>João Sena — Planilhas, Apresentações, Documentos e Materiais Gráficos</title>
+  <meta name="description"
+    content="João Sena cria planilhas, apresentações, documentos e materiais gráficos profissionais para estudantes, autônomos e pequenos negócios. Orçamento pelo WhatsApp.">
+
+  <!-- Pré-conexão com o Google Fonts: acelera o carregamento das fontes abaixo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/lucide@0.525.0/dist/umd/lucide.min.js"></script>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       TELA DE CARREGAMENTO
+       Some sozinha assim que a página carrega (ou, no máximo,
+       depois de 4s — veja a "trava de segurança" no script).
+       Troque a imagem "robot-loader.png" caso queira usar outro
+       personagem/logo.
+       ========================================================= -->
+  <div id="preloader" aria-hidden="true">
+    <img src="img/robot-loader.png" alt="" class="loader-bot">
+    <div class="loader-brand"><span class="brand-mark">JS</span>João Sena</div>
+    <div class="loader-text">carregando<span class="loader-dots">...</span></div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill"></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       CABEÇALHO / MENU DE NAVEGAÇÃO
+       ========================================================= -->
+  <header>
+    <nav class="nav">
+      <a href="#top" class="brand">
+        <span class="brand-mark">JS</span>
+        João Sena
+      </a>
+      <div class="nav-links">
+        <a href="#servicos">Serviços</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="#sobre">Sobre</a>
+      </div>
+      <a href="https://wa.me/5592981525939?text=Olá%2C%20João!%20Vim%20pelo%20site%20e%20quero%20um%20orçamento."
+        target="_blank" rel="noopener" class="btn btn-whats">
+        <i data-lucide="message-circle"></i>
+        Fale comigo
+      </a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- =========================================================
+         SEÇÃO 1 — HERO
+         ========================================================= -->
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div class="reveal in">
+          <span class="eyebrow"><span class="eyebrow-dot"></span>DISPONÍVEL PARA NOVOS PROJETOS</span>
+          <h1>Transformo suas ideias em <span class="accent">materiais profissionais</span></h1>
+          <p class="lead">Planilhas, apresentações, documentos e materiais gráficos personalizados para estudantes,
+            profissionais e pequenas empresas.</p>
+          <div class="hero-actions">
+            <a href="#servicos" class="btn btn-primary"><i data-lucide="file-text"
+                style="width:18px;height:18px;"></i>Solicitar Orçamento</a>
+            <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
+              target="_blank" rel="noopener" class="btn btn-whats"><i data-lucide="message-circle"
+                style="width:18px;height:18px;"></i>Falar no WhatsApp</a>
+          </div>
+          <div class="hero-trust">
+            <span><i data-lucide="check-circle-2"></i>Arquivos editáveis</span>
+            <span><i data-lucide="check-circle-2"></i>Entrega organizada</span>
+            <span><i data-lucide="check-circle-2"></i>Atendimento rápido</span>
+          </div>
+        </div>
+
+        <!-- Ilustração animada: 9 "cartões" (planilha, documento, slide...) que se
+             organizam em grade. Ver comentário da classe .assembler no CSS acima. -->
+        <div class="assembler">
+          <div class="assembler-grid">
+            <div class="chip c1"><i data-lucide="grid-3x3" style="color:var(--blue)"></i><span
+                class="tag">Planilha</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c2"><i data-lucide="file-text" style="color:var(--slate)"></i><span
+                class="tag">Documento</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c3"><i data-lucide="presentation" style="color:var(--blue)"></i><span
+                class="tag">Slides</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c4"><i data-lucide="image" style="color:var(--slate)"></i><span class="tag">Gráfico</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c5"><i data-lucide="check-check"></i><span class="tag">Organizado</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c6"><i data-lucide="bar-chart-3" style="color:var(--green)"></i><span
+                class="tag">Dashboard</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c7"><i data-lucide="folder" style="color:var(--slate)"></i><span class="tag">Arquivo</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c8"><i data-lucide="sparkles"></i><span class="tag">Pronto</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+            <div class="chip c9"><i data-lucide="file-check-2" style="color:var(--blue)"></i><span
+                class="tag">Currículo</span>
+              <div>
+                <div class="bar"></div>
+                <div class="bar short"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 2 — PROBLEMAS QUE RESOLVO
+         ========================================================= -->
+    <section class="problems section-pad" id="problemas">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="kicker">Diagnóstico</span>
+          <h2>Você enfrenta algum destes problemas?</h2>
+        </div>
+        <div class="problem-grid reveal-stagger">
+          <div class="problem-card">
+            <div class="problem-icon"><i data-lucide="grid-2x2-x"></i></div>
+            <p>Planilhas difíceis de usar</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i data-lucide="file-warning"></i></div>
+            <p>Documentos sem padrão profissional</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i data-lucide="monitor-x"></i></div>
+            <p>Apresentações sem impacto</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i data-lucide="wallet"></i></div>
+            <p>Falta de organização financeira</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i data-lucide="hourglass"></i></div>
+            <p>Processos manuais demorados</p>
+          </div>
+          <div class="problem-card">
+            <div class="problem-icon"><i data-lucide="folder-x"></i></div>
+            <p>Arquivos digitais desorganizados</p>
+          </div>
+        </div>
+        <p class="problems-close reveal">Eu transformo desorganização em <span class="g">clareza, produtividade e
+            resultados.</span></p>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 3 — SERVIÇOS
+         Para adicionar/remover um item de uma lista, basta
+         copiar ou apagar uma linha <li>...</li> dentro do card.
+         ========================================================= -->
+    <section class="section-pad" id="servicos">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">O que eu faço</span>
+          <h2>Serviços</h2>
+          <p>Cada entrega é pensada para o seu contexto, do trabalho acadêmico ao relatório executivo.</p>
+        </div>
+        <div class="service-grid reveal-stagger">
+          <div class="service-card s1">
+            <div class="service-icon"><i data-lucide="grid-3x3"></i></div>
+            <h3>Planilhas</h3>
+            <ul>
+              <li><i data-lucide="dot"></i>Controle Financeiro</li>
+              <li><i data-lucide="dot"></i>Fluxo de Caixa</li>
+              <li><i data-lucide="dot"></i>Controle de Estoque</li>
+              <li><i data-lucide="dot"></i>Controle de Vendas</li>
+              <li><i data-lucide="dot"></i>Automatizações Simples</li>
+            </ul>
+          </div>
+          <div class="service-card s2">
+            <div class="service-icon"><i data-lucide="presentation"></i></div>
+            <h3>Apresentações</h3>
+            <ul>
+              <li><i data-lucide="dot"></i>TCC</li>
+              <li><i data-lucide="dot"></i>Seminários</li>
+              <li><i data-lucide="dot"></i>Cursos</li>
+              <li><i data-lucide="dot"></i>Apresentações Corporativas</li>
+              <li><i data-lucide="dot"></i>Relatórios Executivos</li>
+            </ul>
+          </div>
+          <div class="service-card s3">
+            <div class="service-icon"><i data-lucide="file-text"></i></div>
+            <h3>Documentos</h3>
+            <ul>
+              <li><i data-lucide="dot"></i>Trabalhos Acadêmicos</li>
+              <li><i data-lucide="dot"></i>Formatação ABNT</li>
+              <li><i data-lucide="dot"></i>Currículos</li>
+              <li><i data-lucide="dot"></i>Relatórios</li>
+              <li><i data-lucide="dot"></i>Manuais</li>
+            </ul>
+          </div>
+          <div class="service-card s4">
+            <div class="service-icon"><i data-lucide="palette"></i></div>
+            <h3>Materiais Gráficos</h3>
+            <ul>
+              <li><i data-lucide="dot"></i>Portfólios</li>
+              <li><i data-lucide="dot"></i>Folders</li>
+              <li><i data-lucide="dot"></i>Cartilhas</li>
+              <li><i data-lucide="dot"></i>Catálogos</li>
+              <li><i data-lucide="dot"></i>Materiais Informativos</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 4 — DIFERENCIAIS
+         ========================================================= -->
+    <section class="diff section-pad">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">Diferenciais</span>
+          <h2>Por que me escolher?</h2>
+          <p>Um processo direto, pensado para quem precisa de resultado sem complicação.</p>
+        </div>
+        <div class="diff-grid reveal-stagger">
+          <div class="diff-card"><i data-lucide="zap"></i>
+            <p>Atendimento rápido</p>
+          </div>
+          <div class="diff-card"><i data-lucide="file-edit"></i>
+            <p>Arquivos editáveis</p>
+          </div>
+          <div class="diff-card"><i data-lucide="sliders-horizontal"></i>
+            <p>Personalização completa</p>
+          </div>
+          <div class="diff-card"><i data-lucide="sparkles"></i>
+            <p>Visual profissional</p>
+          </div>
+          <div class="diff-card"><i data-lucide="message-square"></i>
+            <p>Comunicação direta</p>
+          </div>
+          <div class="diff-card"><i data-lucide="package-check"></i>
+            <p>Entrega organizada</p>
+          </div>
+          <div class="diff-card"><i data-lucide="life-buoy"></i>
+            <p>Suporte pós-entrega</p>
+          </div>
+          <div class="diff-card"><i data-lucide="tag"></i>
+            <p>Preços acessíveis</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 5 — COMO FUNCIONA (5 passos)
+         ========================================================= -->
+    <section class="section-pad" id="como-funciona">
+      <div class="wrap">
+        <div class="head center reveal">
+          <span class="kicker">Processo</span>
+          <h2>Como funciona</h2>
+          <p>Cinco passos, do primeiro contato até o arquivo final na sua mão.</p>
+        </div>
+        <div class="steps reveal-stagger">
+          <div class="steps-line"></div>
+          <div class="steps-grid">
+            <div class="step">
+              <div class="step-num">1</div>
+              <h4>Você envia sua necessidade</h4>
+              <p>Conta o que precisa pelo WhatsApp, sem burocracia.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">2</div>
+              <h4>Analiso o projeto</h4>
+              <p>Avalio o escopo e o formato ideal para o seu caso.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">3</div>
+              <h4>Envio orçamento</h4>
+              <p>Valor e prazo claros, antes de começar.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">4</div>
+              <h4>Desenvolvo o material</h4>
+              <p>Produção com acompanhamento durante o processo.</p>
+            </div>
+            <div class="step">
+              <div class="step-num">5</div>
+              <h4>Você recebe o arquivo final</h4>
+              <p>Pronto para usar, editável e organizado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 6 — PORTFÓLIO
+         Para adicionar um projeto: copie um bloco .port-card
+         inteiro (de <div class="port-card"> até o </div> que
+         fecha ele), cole depois do último, e troque:
+           1) a cor do gradiente em "style" do .port-thumb
+           2) o ícone em data-lucide="..." (nomes em lucide.dev/icons)
+           3) o texto de <span class="tag"> (categoria) e <h4> (título)
+         ========================================================= -->
+    <section class="section-pad problems" id="portfolio">
+      <div class="wrap">
+        <div class="head reveal">
+          <span class="kicker">Trabalhos</span>
+          <h2>Alguns projetos</h2>
+          <p>Uma amostra dos formatos que já produzi, cada um adaptado ao pedido do cliente.</p>
+        </div>
+        <div class="port-grid reveal-stagger">
+
+          <div class="port-card"
+            onclick="openProject({title:'Planilha Financeira', image:'img/projetos/planilha.png', description:'Planilha desenvolvida para controle financeiro completo, incluindo receitas, despesas, indicadores e relatórios automáticos.', tools:['Excel','Google Sheets','Dashboard']})">
+            <div class="port-thumb">
+              <img src="img/projetos/planilha.png" alt="Print da planilha Controle Financeiro 2026">
+            </div>
+            <div class="port-info">
+              <span class="tag">Planilha</span>
+              <h4>Planilha Financeira</h4>
+            </div>
+
+          </div>
+
+          <div class="port-card"
+            onclick="openProject({title:'Leitor Json', image:'img/projetos/leitor-json.png', description:'Aplicação para leitura e análise de arquivos JSON, com interface intuitiva e recursos de filtragem e busca.', tools:['JavaScript','HTML','CSS']})">
+            <div class="port-thumb">
+              <img src="img/projetos/leitor-json.png" alt="Print do leitor Json">
+            </div>
+            <div class="port-info"><span class="tag">Aplicação</span>
+              <h4>Leitor Json</h4>
+            </div>
+          </div>
+
+          <div class="port-card"
+            onclick="openProject({title:'Sorteador Personalizado', image:'img/projetos/sorteador.png', description:'Aplicação web que permite sortear itens de uma lista personalizada, com opções de configuração e resultados aleatórios.', tools:['JavaScript','HTML','CSS']})">
+            <div class="port-thumb">
+              <img src="img/projetos/sorteador.png" alt="Print do sorteador personalizado">
+            </div>
+            <div class="port-info"><span class="tag">Aplicação</span>
+              <h4>Sorteador personalizado</h4>
+            </div>
+          </div>
+
+          <div class="port-card">
+            <div class="port-thumb" style="background:linear-gradient(135deg,#E08A2E,#F0A64C)">
+              <div class="mock-lines"><i style="width:50%"></i><i style="width:65%"></i><i style="width:35%"></i></div>
+              <i data-lucide="briefcase"></i>
+            </div>
+            <div class="port-info"><span class="tag">Design</span>
+              <h4>Portfólio Profissional</h4>
+            </div>
+          </div>
+
+          <div class="port-card">
+            <div class="port-thumb" style="background:linear-gradient(135deg,var(--blue-deep),#2A4FC7)">
+              <div class="mock-lines"><i style="width:70%"></i><i style="width:55%"></i><i style="width:60%"></i><i
+                  style="width:40%"></i></div>
+              <i data-lucide="book-open"></i>
+            </div>
+            <div class="port-info"><span class="tag">Documento</span>
+              <h4>Manual de Procedimentos</h4>
+            </div>
+          </div>
+
+          <div class="port-card">
+            <div class="port-thumb" style="background:linear-gradient(135deg,#0C8F65,var(--green))">
+              <div class="mock-lines"><i style="width:60%"></i><i style="width:45%"></i><i style="width:68%"></i></div>
+              <i data-lucide="layout-template"></i>
+            </div>
+            <div class="port-info"><span class="tag">Design</span>
+              <h4>Folder Institucional</h4>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 7 — SOBRE MIM
+         ========================================================= -->
+    <section class="section-pad" id="sobre">
+      <div class="wrap about-grid">
+        <div class="about-photo reveal">
+          <img src="img/joao-sena.png" alt="Foto de João Sena">
+          <div class="about-badge"><i data-lucide="graduation-cap"></i><span>Análise e Desenvolvimento de
+              Sistemas</span></div>
+        </div>
+        <div class="about-text reveal">
+          <span class="kicker">Quem sou</span>
+          <h2>João Sena</h2>
+          <p>Me chamo João, tenho formação Técnica em Informática para Internet e sou estudante de Análise e
+            Desenvolvimento de Sistemas. Meu trabalho é transformar informações em materiais organizados, profissionais
+            e fáceis de utilizar.</p>
+          <div class="about-tags">
+            <span>Técnico em Informática para Internet</span>
+            <span>Universitário</span>
+            <span>Criador de soluções digitais</span>
+            <span>Apaixonado por tecnologia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SEÇÃO 8 — CHAMADA FINAL (CTA)
+         ========================================================= -->
+
+    <section class="testi section-pad" id="depoimentos">
+      <div class="wrap">
+        <div class="cta-final reveal">
+          <h2>Vamos tirar seu projeto do papel?</h2>
+          <p>Entre em contato e receba um orçamento personalizado.</p>
+          <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
+            target="_blank" rel="noopener" class="btn btn-whats">
+            <i data-lucide="message-circle" style="width:20px;height:20px;"></i>Fale comigo</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================
+       RODAPÉ
+       ========================================================= -->
+  <footer>
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <div class="foot-brand"><span class="brand-mark">JS</span>João Sena</div>
+          <p style="max-width:320px;">Planilhas, apresentações, documentos e materiais gráficos que organizam suas
+            ideias com clareza e profissionalismo.</p>
+          <div class="foot-social">
+            <a href="#" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="https://www.linkedin.com/in/joaosenajs" target="_blank" rel="noopener" aria-label="LinkedIn"><i
+                data-lucide="linkedin"></i></a>
+            <a href="https://github.com/xuao-js" target="_blank" rel="noopener" aria-label="GitHub"><i
+                data-lucide="github"></i></a>
+          </div>
+        </div>
+        <div class="foot-col">
+          <h5>Contato</h5>
+          <a href="https://wa.me/5592981525939" target="_blank" rel="noopener">(92) 98152-5939</a>
+          <a href="mailto:joaosena05@outlook.com">joaosena05@outlook.com</a>
+        </div>
+        <div class="foot-col">
+          <h5>Navegação</h5>
+          <a href="#servicos">Serviços</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#portfolio">Portfólio</a>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 João Sena. Todos os direitos reservados.</span>
+        <span>Feito com organização e atenção aos detalhes.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão flutuante de WhatsApp, sempre visível no canto da tela -->
+  <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
+    target="_blank" rel="noopener" class="float-wa" aria-label="Fale comigo">
+    <i data-lucide="message-circle"></i>
+  </a>
+
+  <div id="projectModal" class="modal">
+
+    <div class="modal-content">
+
+      <button class="modal-close" onclick="closeProject()">
+        ×
+      </button>
+
+      <div id="modalMedia" class="modal-media"></div>
+
+      <div class="modal-body">
+
+        <h3 id="modalTitle"></h3>
+
+        <p id="modalDescription"></p>
+
+        <div id="modalTools" class="tools"></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
