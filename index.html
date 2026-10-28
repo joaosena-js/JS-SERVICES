@@ -4,9 +4,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>João Sena — Planilhas, Apresentações, Documentos e Materiais Gráficos</title>
+  <title>João Sena | Planilhas, Apresentações, Documentos e Materiais Gráficos</title>
   <meta name="description"
     content="João Sena cria planilhas, apresentações, documentos e materiais gráficos profissionais para estudantes, autônomos e pequenos negócios. Orçamento pelo WhatsApp.">
+  <meta name="theme-color" content="#070B16">
+
+  <!-- Texto que aparece quando o link do site é compartilhado (WhatsApp, LinkedIn etc.) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="João Sena | Planilhas, Apresentações, Documentos e Materiais Gráficos">
+  <meta property="og:description"
+    content="Transformo suas ideias em materiais profissionais. Orçamento pelo WhatsApp.">
+
+  <link rel="icon" href="favicon.ico">
+
+  <!-- Marca que o JavaScript está ativo. As animações de entrada só escondem
+       o conteúdo quando essa classe existe, então sem JS o site continua legível. -->
+  <script>document.documentElement.classList.add('js');</script>
 
   <!-- Pré-conexão com o Google Fonts: acelera o carregamento das fontes abaixo -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,20 +29,24 @@
     href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="https://unpkg.com/lucide@0.525.0/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.525.0/dist/umd/lucide.min.js" defer></script>
+  <script src="js/script.js" defer></script>
 </head>
 
 <body>
 
+  <!-- Link escondido que aparece ao navegar com a tecla Tab (acessibilidade) -->
+  <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
   <!-- =========================================================
        TELA DE CARREGAMENTO
        Some sozinha assim que a página carrega (ou, no máximo,
-       depois de 4s — veja a "trava de segurança" no script).
-       Troque a imagem "robot-loader.png" caso queira usar outro
+       depois de 3s, veja a "trava de segurança" no script).
+       Troque a imagem "robot-loader.webp" caso queira usar outro
        personagem/logo.
        ========================================================= -->
   <div id="preloader" aria-hidden="true">
-    <img src="img/robot-loader.png" alt="" class="loader-bot">
+    <img src="img/robot-loader.webp" alt="" class="loader-bot" width="132" height="132">
     <div class="loader-brand"><span class="brand-mark">JS</span>João Sena</div>
     <div class="loader-text">carregando<span class="loader-dots">...</span></div>
     <div class="loader-bar">
@@ -38,45 +56,69 @@
 
   <!-- =========================================================
        CABEÇALHO / MENU DE NAVEGAÇÃO
+       A classe "scrolled" é adicionada pelo script quando a
+       página rola, deixando o menu mais compacto.
        ========================================================= -->
-  <header>
-    <nav class="nav">
+  <header id="header">
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+    <nav class="nav" aria-label="Menu principal">
       <a href="#top" class="brand">
         <span class="brand-mark">JS</span>
         João Sena
       </a>
-      <div class="nav-links">
+      <div class="nav-links" id="navLinks">
         <a href="#servicos">Serviços</a>
         <a href="#como-funciona">Como funciona</a>
         <a href="#portfolio">Portfólio</a>
         <a href="#sobre">Sobre</a>
       </div>
-      <a href="https://wa.me/5592981525939?text=Olá%2C%20João!%20Vim%20pelo%20site%20e%20quero%20um%20orçamento."
-        target="_blank" rel="noopener" class="btn btn-whats">
-        <i data-lucide="message-circle"></i>
-        Fale comigo
-      </a>
+      <div class="nav-right">
+        <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
+          target="_blank" rel="noopener" class="btn btn-whats btn-sm">
+          <i data-lucide="message-circle"></i>
+          <span>Fale comigo</span>
+        </a>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false"
+          aria-controls="navLinks">
+          <span></span><span></span>
+        </button>
+      </div>
     </nav>
   </header>
 
   <main id="top">
+    <span id="conteudo"></span>
 
     <!-- =========================================================
-         SEÇÃO 1 — HERO
+         SEÇÃO 1 — HERO (fundo escuro com "aurora" animada)
+         Cada palavra do título está em um <span class="w"> para
+         entrar uma de cada vez. Se mudar o título, mantenha um
+         <span class="w"> por palavra (ou apague os spans, que o
+         texto continua aparecendo normalmente).
          ========================================================= -->
     <section class="hero">
+      <div class="hero-bg" aria-hidden="true">
+        <span class="blob b1"></span>
+        <span class="blob b2"></span>
+        <span class="blob b3"></span>
+        <span class="hero-grid-lines"></span>
+      </div>
+
       <div class="wrap hero-grid">
-        <div class="reveal in">
+        <div class="hero-copy">
           <span class="eyebrow"><span class="eyebrow-dot"></span>DISPONÍVEL PARA NOVOS PROJETOS</span>
-          <h1>Transformo suas ideias em <span class="accent">materiais profissionais</span></h1>
+          <h1>
+            <span class="w">Transformo</span> <span class="w">suas</span> <span class="w">ideias</span>
+            <span class="w">em</span> <span class="accent"><span class="w">materiais</span> <span
+                class="w">profissionais</span></span>
+          </h1>
           <p class="lead">Planilhas, apresentações, documentos e materiais gráficos personalizados para estudantes,
             profissionais e pequenas empresas.</p>
           <div class="hero-actions">
-            <a href="#servicos" class="btn btn-primary"><i data-lucide="file-text"
-                style="width:18px;height:18px;"></i>Solicitar Orçamento</a>
+            <a href="#servicos" class="btn btn-primary"><i data-lucide="file-text"></i>Solicitar Orçamento</a>
             <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
-              target="_blank" rel="noopener" class="btn btn-whats"><i data-lucide="message-circle"
-                style="width:18px;height:18px;"></i>Falar no WhatsApp</a>
+              target="_blank" rel="noopener" class="btn btn-whats"><i data-lucide="message-circle"></i>Falar no
+              WhatsApp</a>
           </div>
           <div class="hero-trust">
             <span><i data-lucide="check-circle-2"></i>Arquivos editáveis</span>
@@ -85,32 +127,30 @@
           </div>
         </div>
 
-        <!-- Ilustração animada: 9 "cartões" (planilha, documento, slide...) que se
-             organizam em grade. Ver comentário da classe .assembler no CSS acima. -->
-        <div class="assembler">
-          <div class="assembler-grid">
-            <div class="chip c1"><i data-lucide="grid-3x3" style="color:var(--blue)"></i><span
-                class="tag">Planilha</span>
+        <!-- Ilustração animada: 9 "cartões" (planilha, documento, slide...) que chegam
+             espalhados e se organizam em grade. No computador, a grade inclina
+             levemente acompanhando o mouse (ver "tilt" no script). -->
+        <div class="assembler" aria-hidden="true">
+          <div class="assembler-grid" id="assembler">
+            <div class="chip c1"><i data-lucide="grid-3x3"></i><span class="tag">Planilha</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
               </div>
             </div>
-            <div class="chip c2"><i data-lucide="file-text" style="color:var(--slate)"></i><span
-                class="tag">Documento</span>
+            <div class="chip c2"><i data-lucide="file-text"></i><span class="tag">Documento</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
               </div>
             </div>
-            <div class="chip c3"><i data-lucide="presentation" style="color:var(--blue)"></i><span
-                class="tag">Slides</span>
+            <div class="chip c3"><i data-lucide="presentation"></i><span class="tag">Slides</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
               </div>
             </div>
-            <div class="chip c4"><i data-lucide="image" style="color:var(--slate)"></i><span class="tag">Gráfico</span>
+            <div class="chip c4"><i data-lucide="image"></i><span class="tag">Gráfico</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
@@ -122,14 +162,13 @@
                 <div class="bar short"></div>
               </div>
             </div>
-            <div class="chip c6"><i data-lucide="bar-chart-3" style="color:var(--green)"></i><span
-                class="tag">Dashboard</span>
+            <div class="chip c6"><i data-lucide="bar-chart-3"></i><span class="tag">Dashboard</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
               </div>
             </div>
-            <div class="chip c7"><i data-lucide="folder" style="color:var(--slate)"></i><span class="tag">Arquivo</span>
+            <div class="chip c7"><i data-lucide="folder"></i><span class="tag">Arquivo</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
@@ -141,8 +180,7 @@
                 <div class="bar short"></div>
               </div>
             </div>
-            <div class="chip c9"><i data-lucide="file-check-2" style="color:var(--blue)"></i><span
-                class="tag">Currículo</span>
+            <div class="chip c9"><i data-lucide="file-check-2"></i><span class="tag">Currículo</span>
               <div>
                 <div class="bar"></div>
                 <div class="bar short"></div>
@@ -154,12 +192,46 @@
     </section>
 
     <!-- =========================================================
+         FAIXA ROLANDO (marquee) com os tipos de serviço.
+         A lista aparece duas vezes para o loop não ter "buraco".
+         Se trocar um item, troque nas duas listas.
+         ========================================================= -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <ul>
+          <li>Controle Financeiro</li>
+          <li>Formatação ABNT</li>
+          <li>TCC</li>
+          <li>Fluxo de Caixa</li>
+          <li>Currículos</li>
+          <li>Relatórios Executivos</li>
+          <li>Folders</li>
+          <li>Catálogos</li>
+          <li>Controle de Estoque</li>
+          <li>Seminários</li>
+        </ul>
+        <ul>
+          <li>Controle Financeiro</li>
+          <li>Formatação ABNT</li>
+          <li>TCC</li>
+          <li>Fluxo de Caixa</li>
+          <li>Currículos</li>
+          <li>Relatórios Executivos</li>
+          <li>Folders</li>
+          <li>Catálogos</li>
+          <li>Controle de Estoque</li>
+          <li>Seminários</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- =========================================================
          SEÇÃO 2 — PROBLEMAS QUE RESOLVO
          ========================================================= -->
     <section class="problems section-pad" id="problemas">
       <div class="wrap">
         <div class="head center reveal">
-          <span class="kicker">Diagnóstico</span>
+          <span class="kicker"><b>01</b>Diagnóstico</span>
           <h2>Você enfrenta algum destes problemas?</h2>
         </div>
         <div class="problem-grid reveal-stagger">
@@ -197,16 +269,17 @@
          SEÇÃO 3 — SERVIÇOS
          Para adicionar/remover um item de uma lista, basta
          copiar ou apagar uma linha <li>...</li> dentro do card.
+         A classe "spot" faz o brilho seguir o mouse no card.
          ========================================================= -->
     <section class="section-pad" id="servicos">
       <div class="wrap">
         <div class="head reveal">
-          <span class="kicker">O que eu faço</span>
+          <span class="kicker"><b>02</b>O que eu faço</span>
           <h2>Serviços</h2>
           <p>Cada entrega é pensada para o seu contexto, do trabalho acadêmico ao relatório executivo.</p>
         </div>
         <div class="service-grid reveal-stagger">
-          <div class="service-card s1">
+          <div class="service-card spot s1">
             <div class="service-icon"><i data-lucide="grid-3x3"></i></div>
             <h3>Planilhas</h3>
             <ul>
@@ -217,7 +290,7 @@
               <li><i data-lucide="dot"></i>Automatizações Simples</li>
             </ul>
           </div>
-          <div class="service-card s2">
+          <div class="service-card spot s2">
             <div class="service-icon"><i data-lucide="presentation"></i></div>
             <h3>Apresentações</h3>
             <ul>
@@ -228,7 +301,7 @@
               <li><i data-lucide="dot"></i>Relatórios Executivos</li>
             </ul>
           </div>
-          <div class="service-card s3">
+          <div class="service-card spot s3">
             <div class="service-icon"><i data-lucide="file-text"></i></div>
             <h3>Documentos</h3>
             <ul>
@@ -239,7 +312,7 @@
               <li><i data-lucide="dot"></i>Manuais</li>
             </ul>
           </div>
-          <div class="service-card s4">
+          <div class="service-card spot s4">
             <div class="service-icon"><i data-lucide="palette"></i></div>
             <h3>Materiais Gráficos</h3>
             <ul>
@@ -260,33 +333,33 @@
     <section class="diff section-pad">
       <div class="wrap">
         <div class="head reveal">
-          <span class="kicker">Diferenciais</span>
+          <span class="kicker"><b>03</b>Diferenciais</span>
           <h2>Por que me escolher?</h2>
           <p>Um processo direto, pensado para quem precisa de resultado sem complicação.</p>
         </div>
         <div class="diff-grid reveal-stagger">
-          <div class="diff-card"><i data-lucide="zap"></i>
+          <div class="diff-card spot"><i data-lucide="zap"></i>
             <p>Atendimento rápido</p>
           </div>
-          <div class="diff-card"><i data-lucide="file-edit"></i>
+          <div class="diff-card spot"><i data-lucide="file-edit"></i>
             <p>Arquivos editáveis</p>
           </div>
-          <div class="diff-card"><i data-lucide="sliders-horizontal"></i>
+          <div class="diff-card spot"><i data-lucide="sliders-horizontal"></i>
             <p>Personalização completa</p>
           </div>
-          <div class="diff-card"><i data-lucide="sparkles"></i>
+          <div class="diff-card spot"><i data-lucide="sparkles"></i>
             <p>Visual profissional</p>
           </div>
-          <div class="diff-card"><i data-lucide="message-square"></i>
+          <div class="diff-card spot"><i data-lucide="message-square"></i>
             <p>Comunicação direta</p>
           </div>
-          <div class="diff-card"><i data-lucide="package-check"></i>
+          <div class="diff-card spot"><i data-lucide="package-check"></i>
             <p>Entrega organizada</p>
           </div>
-          <div class="diff-card"><i data-lucide="life-buoy"></i>
+          <div class="diff-card spot"><i data-lucide="life-buoy"></i>
             <p>Suporte pós-entrega</p>
           </div>
-          <div class="diff-card"><i data-lucide="tag"></i>
+          <div class="diff-card spot"><i data-lucide="tag"></i>
             <p>Preços acessíveis</p>
           </div>
         </div>
@@ -295,16 +368,18 @@
 
     <!-- =========================================================
          SEÇÃO 5 — COMO FUNCIONA (5 passos)
+         A linha atrás dos números "se preenche" quando a seção
+         aparece na tela.
          ========================================================= -->
     <section class="section-pad" id="como-funciona">
       <div class="wrap">
         <div class="head center reveal">
-          <span class="kicker">Processo</span>
+          <span class="kicker"><b>04</b>Processo</span>
           <h2>Como funciona</h2>
           <p>Cinco passos, do primeiro contato até o arquivo final na sua mão.</p>
         </div>
         <div class="steps reveal-stagger">
-          <div class="steps-line"></div>
+          <div class="steps-line"><span></span></div>
           <div class="steps-grid">
             <div class="step">
               <div class="step-num">1</div>
@@ -338,9 +413,15 @@
 
     <!-- =========================================================
          SEÇÃO 6 — PORTFÓLIO
-         Para adicionar um projeto: copie um bloco .port-card
-         inteiro (de <div class="port-card"> até o </div> que
-         fecha ele), cole depois do último, e troque:
+         Projeto COM detalhes (abre a janela ao clicar): use um
+         <button class="port-card"> e preencha os data-*:
+           data-title        título exibido na janela
+           data-image        caminho do print (ex.: img/projetos/x.webp)
+           data-description  texto da janela
+           data-tools        ferramentas separadas por vírgula
+           data-video        (opcional) caminho de um .mp4 no lugar da imagem
+         Projeto SEM detalhes (só o mockup colorido): use um
+         <div class="port-card"> como os três últimos abaixo, e troque
            1) a cor do gradiente em "style" do .port-thumb
            2) o ícone em data-lucide="..." (nomes em lucide.dev/icons)
            3) o texto de <span class="tag"> (categoria) e <h4> (título)
@@ -348,43 +429,54 @@
     <section class="section-pad problems" id="portfolio">
       <div class="wrap">
         <div class="head reveal">
-          <span class="kicker">Trabalhos</span>
+          <span class="kicker"><b>05</b>Trabalhos</span>
           <h2>Alguns projetos</h2>
           <p>Uma amostra dos formatos que já produzi, cada um adaptado ao pedido do cliente.</p>
         </div>
         <div class="port-grid reveal-stagger">
 
-          <div class="port-card"
-            onclick="openProject({title:'Planilha Financeira', image:'img/projetos/planilha.png', description:'Planilha desenvolvida para controle financeiro completo, incluindo receitas, despesas, indicadores e relatórios automáticos.', tools:['Excel','Google Sheets','Dashboard']})">
-            <div class="port-thumb">
-              <img src="img/projetos/planilha.png" alt="Print da planilha Controle Financeiro 2026">
-            </div>
-            <div class="port-info">
+          <button type="button" class="port-card is-open" data-title="Planilha Financeira"
+            data-image="img/projetos/planilha.webp"
+            data-description="Planilha desenvolvida para controle financeiro completo, incluindo receitas, despesas, indicadores e relatórios automáticos."
+            data-tools="Excel, Google Sheets, Dashboard">
+            <span class="port-thumb">
+              <img src="img/projetos/planilha.webp" alt="Print da planilha Controle Financeiro 2026" loading="lazy"
+                decoding="async" width="1600" height="858">
+              <span class="port-view"><i data-lucide="maximize-2"></i>Ver projeto</span>
+            </span>
+            <span class="port-info">
               <span class="tag">Planilha</span>
-              <h4>Planilha Financeira</h4>
-            </div>
+              <span class="port-title">Planilha Financeira</span>
+            </span>
+          </button>
 
-          </div>
+          <button type="button" class="port-card is-open" data-title="Leitor Json"
+            data-image="img/projetos/leitor-json.webp"
+            data-description="Aplicação para leitura e análise de arquivos JSON, com interface intuitiva e recursos de filtragem e busca."
+            data-tools="JavaScript, HTML, CSS">
+            <span class="port-thumb">
+              <img src="img/projetos/leitor-json.webp" alt="Print do leitor Json" loading="lazy" decoding="async"
+                width="1600" height="908">
+              <span class="port-view"><i data-lucide="maximize-2"></i>Ver projeto</span>
+            </span>
+            <span class="port-info"><span class="tag">Aplicação</span>
+              <span class="port-title">Leitor Json</span>
+            </span>
+          </button>
 
-          <div class="port-card"
-            onclick="openProject({title:'Leitor Json', image:'img/projetos/leitor-json.png', description:'Aplicação para leitura e análise de arquivos JSON, com interface intuitiva e recursos de filtragem e busca.', tools:['JavaScript','HTML','CSS']})">
-            <div class="port-thumb">
-              <img src="img/projetos/leitor-json.png" alt="Print do leitor Json">
-            </div>
-            <div class="port-info"><span class="tag">Aplicação</span>
-              <h4>Leitor Json</h4>
-            </div>
-          </div>
-
-          <div class="port-card"
-            onclick="openProject({title:'Sorteador Personalizado', image:'img/projetos/sorteador.png', description:'Aplicação web que permite sortear itens de uma lista personalizada, com opções de configuração e resultados aleatórios.', tools:['JavaScript','HTML','CSS']})">
-            <div class="port-thumb">
-              <img src="img/projetos/sorteador.png" alt="Print do sorteador personalizado">
-            </div>
-            <div class="port-info"><span class="tag">Aplicação</span>
-              <h4>Sorteador personalizado</h4>
-            </div>
-          </div>
+          <button type="button" class="port-card is-open" data-title="Sorteador Personalizado"
+            data-image="img/projetos/sorteador.webp"
+            data-description="Aplicação web que permite sortear itens de uma lista personalizada, com opções de configuração e resultados aleatórios."
+            data-tools="JavaScript, HTML, CSS">
+            <span class="port-thumb">
+              <img src="img/projetos/sorteador.webp" alt="Print do sorteador personalizado" loading="lazy"
+                decoding="async" width="1600" height="901">
+              <span class="port-view"><i data-lucide="maximize-2"></i>Ver projeto</span>
+            </span>
+            <span class="port-info"><span class="tag">Aplicação</span>
+              <span class="port-title">Sorteador personalizado</span>
+            </span>
+          </button>
 
           <div class="port-card">
             <div class="port-thumb" style="background:linear-gradient(135deg,#E08A2E,#F0A64C)">
@@ -426,13 +518,16 @@
          ========================================================= -->
     <section class="section-pad" id="sobre">
       <div class="wrap about-grid">
-        <div class="about-photo reveal">
-          <img src="img/joao-sena.png" alt="Foto de João Sena">
-          <div class="about-badge"><i data-lucide="graduation-cap"></i><span>Análise e Desenvolvimento de
-              Sistemas</span></div>
+        <div class="about-photo-wrap reveal">
+          <div class="about-photo">
+            <img src="img/joao-sena.webp" alt="Foto de João Sena" loading="lazy" decoding="async" width="820"
+              height="1213">
+            <div class="about-badge"><i data-lucide="graduation-cap"></i><span>Análise e Desenvolvimento de
+                Sistemas</span></div>
+          </div>
         </div>
         <div class="about-text reveal">
-          <span class="kicker">Quem sou</span>
+          <span class="kicker"><b>06</b>Quem sou</span>
           <h2>João Sena</h2>
           <p>Me chamo João, tenho formação Técnica em Informática para Internet e sou estudante de Análise e
             Desenvolvimento de Sistemas. Meu trabalho é transformar informações em materiais organizados, profissionais
@@ -450,15 +545,16 @@
     <!-- =========================================================
          SEÇÃO 8 — CHAMADA FINAL (CTA)
          ========================================================= -->
-
     <section class="testi section-pad" id="depoimentos">
       <div class="wrap">
         <div class="cta-final reveal">
+          <span class="cta-glow g1" aria-hidden="true"></span>
+          <span class="cta-glow g2" aria-hidden="true"></span>
           <h2>Vamos tirar seu projeto do papel?</h2>
           <p>Entre em contato e receba um orçamento personalizado.</p>
           <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
             target="_blank" rel="noopener" class="btn btn-whats">
-            <i data-lucide="message-circle" style="width:20px;height:20px;"></i>Fale comigo</a>
+            <i data-lucide="message-circle"></i>Fale comigo</a>
         </div>
       </div>
     </section>
@@ -473,10 +569,11 @@
       <div class="foot-grid">
         <div>
           <div class="foot-brand"><span class="brand-mark">JS</span>João Sena</div>
-          <p style="max-width:320px;">Planilhas, apresentações, documentos e materiais gráficos que organizam suas
+          <p class="foot-about">Planilhas, apresentações, documentos e materiais gráficos que organizam suas
             ideias com clareza e profissionalismo.</p>
           <div class="foot-social">
-            <a href="https://www.instagram.com/xuao.js/" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+            <a href="https://www.instagram.com/xuao.js/" target="_blank" rel="noopener" aria-label="Instagram"><i
+                data-lucide="instagram"></i></a>
             <a href="https://www.linkedin.com/in/joaosenajs" target="_blank" rel="noopener" aria-label="LinkedIn"><i
                 data-lucide="linkedin"></i></a>
             <a href="https://github.com/joaosena-js" target="_blank" rel="noopener" aria-label="GitHub"><i
@@ -504,35 +601,29 @@
 
   <!-- Botão flutuante de WhatsApp, sempre visível no canto da tela -->
   <a href="https://wa.me/5592981525939?text=Ol%C3%A1%2C%20Jo%C3%A3o%21%20Vim%20pelo%20site%20e%20quero%20um%20or%C3%A7amento."
-    target="_blank" rel="noopener" class="float-wa" aria-label="Fale comigo">
+    target="_blank" rel="noopener" class="float-wa" aria-label="Fale comigo pelo WhatsApp">
     <i data-lucide="message-circle"></i>
   </a>
 
-  <div id="projectModal" class="modal">
-
+  <!-- =========================================================
+       JANELA (MODAL) DO PORTFÓLIO
+       Preenchida pelo script com os data-* do card clicado.
+       Fecha no X, clicando fora ou com a tecla Esc.
+       ========================================================= -->
+  <div id="projectModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
     <div class="modal-content">
-
-      <button class="modal-close" onclick="closeProject()">
-        ×
+      <button type="button" class="modal-close" aria-label="Fechar">
+        <i data-lucide="x"></i>
       </button>
-
       <div id="modalMedia" class="modal-media"></div>
-
       <div class="modal-body">
-
         <h3 id="modalTitle"></h3>
-
         <p id="modalDescription"></p>
-
         <div id="modalTools" class="tools"></div>
-
       </div>
-
     </div>
-
   </div>
 
-  <script src="js/script.js"></script>
 </body>
 
 </html>
